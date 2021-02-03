@@ -4,9 +4,19 @@ using System.Net.Sockets;
 
 namespace GetServerDateTime
 {
-	public class ServerDateTime
+	public class TimeServer
 	{
 		public string[] Servers = { "132.163.96.1", "132.163.96.2", "129.6.15.28", "129.6.15.29" };
+
+		public TimeServer()
+		{
+
+		}
+
+		public TimeServer(string[] servers)
+		{
+			this.Servers = servers;
+		}
 
 		public DateTime GetServerTime()
 		{
@@ -19,7 +29,7 @@ namespace GetServerDateTime
 			return DateTime.MinValue;
 		}
 
-		private DateTime ConnectServer(string server)
+		public DateTime ConnectServer(string server)
 		{
 			string time;
 			try
