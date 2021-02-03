@@ -6,30 +6,20 @@ namespace GetServerDateTime
 {
 	public class TimeServer
 	{
-		public string[] Servers = { "132.163.96.1", "132.163.96.2", "129.6.15.28", "129.6.15.29" };
+		public static string[] Servers = { "132.163.96.1", "132.163.96.2", "129.6.15.28", "129.6.15.29" };
 
-		public TimeServer()
-		{
-
-		}
-
-		public TimeServer(string[] servers)
-		{
-			this.Servers = servers;
-		}
-
-		public DateTime GetServerTime()
+		public static DateTime GetServerTime()
 		{
 			foreach (var server in Servers)
 			{
-				DateTime result = ConnectServer(server);
+				DateTime result = GetServerTime(server);
 				if (result > DateTime.MinValue)
 					return result;
 			}
 			return DateTime.MinValue;
 		}
 
-		public DateTime ConnectServer(string server)
+		public static DateTime GetServerTime(string server)
 		{
 			string time;
 			try
